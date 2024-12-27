@@ -1,0 +1,51 @@
+context:
+  version: "0.6.0"      # the version of the package
+  name: "slycot"        # the name of the package
+
+package:
+  name: ${{ name }}          # use the context variables defined above
+  version: ${{ version }}    # use the context variables defined above
+
+source:
+  # the url is formed from a "template" with the context variables
+  url: https://files.pythonhosted.org/packages/a8/18/96acf7dcdc931d0c9a165a8aa3a6f3e6b145d0d69aea43ecef82b8611888/${{ name }}-${{ version }}.tar.gz
+  sha256: 98ecf19cad0c6ce0d6f4db95169efc14f89a285ac24a4a8da1ca5b96b9da3c23
+
+build:
+  number: 0
+
+requirements:
+  build:
+    - python
+    - cross-python_${{ target_platform }}
+    - ${{ compiler("c") }}
+    - pip
+    - scikit-build
+    - setuptools-scm
+  host:
+    - python
+  run:
+    - python
+
+# to test a python package, we need to use the pytester package.
+# this will run pytests in a headless browser
+# tests:
+#   - script: pytester
+#     requirements:
+#       build:
+#         - pytester
+#       run:
+#         - pytester-run
+#     files:
+#       recipe:
+#         - test_regex.py
+
+
+about:
+  homepage: https://github.com/python-control/Slycot
+  license: GPL-2.0 AND BSD-3-Clause
+  summary: A wrapper for the SLICOT control and systems library
+
+extra:
+  recipe-maintainers:
+    - ecyht2

@@ -1,0 +1,45 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"type": "shell",
+			"label": "recreate build-env",
+			"command": "micromamba",
+			"args": [
+				"create",
+				"-f",
+				"${workspaceFolder}/build-environment.yml",
+				"-y"
+			]
+		},
+		{
+			"type": "shell",
+			"label": "rebuild",
+			"command": "micromamba",
+			"dependsOn": [
+				"clean"
+			],
+			"args": [
+				"run",
+				"-n",
+				"build-env",
+				"jupyter-lite",
+				"serve"
+			],
+			"problemMatcher": [],
+			"group": {
+				"kind": "build",
+				"isDefault": true
+			}
+		},
+		{
+			"type": "shell",
+			"label": "clean",
+			"command": "rm",
+			"args": [
+				"-rf",
+				"${workspaceFolder}/_output/"
+			]
+		}
+	]
+}

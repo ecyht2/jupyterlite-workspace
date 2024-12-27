@@ -3,6 +3,11 @@ channels:
   - https://repo.mamba.pm/emscripten-forge
   - conda-forge
 dependencies:
-  - python=3.13
+  # Kernals
   - xeus-python
-  - ipycanvas
+  # Packages
+  - numpy
+  - scipy
+  - sympy
+  - matplotlib
+  # - jedi-language-server
