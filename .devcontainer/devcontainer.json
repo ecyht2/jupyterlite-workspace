@@ -1,0 +1,9 @@
+{
+    "name": "Jupyterlite",
+    "build": {
+      "dockerfile": "Dockerfile"
+    },
+    "features": {
+    },
+    "forwardPorts": [8000]
+  }
